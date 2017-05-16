@@ -569,6 +569,7 @@ vAPI.setIcon = function(tabId, iconStatus, badge) {
                 iconStateForTabId[curTabId].active = true;
             }
             vAPI.tabs.stack[curTabId] = curTab;
+            vAPI.tabs.reload(curTabId);
         }
     }
 })();
