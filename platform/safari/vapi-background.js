@@ -327,6 +327,7 @@ vAPI.tabs.registerListeners = function() {
         if ( !vAPI.tabs.popupCandidate || !e.target || e.url === 'about:blank' ) {
             return;
         }
+
         var targetUrl = e.url,
             targetTabId = vAPI.tabs.getTabId(e.target).toString(),
             openerTabId = vAPI.tabs.popupCandidate;
@@ -650,6 +651,7 @@ safari.application.addEventListener('deactivate', function(event) {
     if ( !(event.target instanceof SafariBrowserTab) ) {
         return;
     }
+
     // when a tab is deactivated...
     var tabId = vAPI.tabs.getTabId(event.target),
         state = iconStateForTabId[tabId];
@@ -717,7 +719,6 @@ vAPI.setIcon = function(tabId, iconStatus, badge) {
                 iconStateForTabId[curTabId].active = true;
             }
             vAPI.tabs.stack[curTabId] = curTab;
-            vAPI.tabs.reload(curTabId);
         }
     }
 })();
