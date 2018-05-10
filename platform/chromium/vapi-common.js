@@ -26,13 +26,13 @@
 /******************************************************************************/
 /******************************************************************************/
 
-(function(self) {
+(function() {
 
-var chrome = self.chrome;
+var chrome = window.chrome;
 
 /******************************************************************************/
 
-vAPI.setTimeout = vAPI.setTimeout || self.setTimeout.bind(self);
+vAPI.setTimeout = vAPI.setTimeout || window.setTimeout.bind(window);
 
 /******************************************************************************/
 
@@ -62,10 +62,10 @@ vAPI.webextFlavor = {
     }
 
     // Asynchronous
-    var async = self.browser instanceof Object &&
-                typeof self.browser.runtime.getBrowserInfo === 'function';
+    var async = window.browser instanceof Object &&
+                typeof window.browser.runtime.getBrowserInfo === 'function';
     if ( async ) {
-        self.browser.runtime.getBrowserInfo().then(function(info) {
+        window.browser.runtime.getBrowserInfo().then(function(info) {
             flavor.major = parseInt(info.version, 10) || 0;
             soup.add(info.vendor.toLowerCase())
                 .add(info.name.toLowerCase());
@@ -154,7 +154,7 @@ setScriptDirection(vAPI.i18n('@@ui_locale'));
 // https://github.com/gorhill/uBlock/issues/3057
 // - webNavigation.onCreatedNavigationTarget become broken on Firefox when we
 //   try to make the popup panel close itself using the original
-//   `window.open('', '_self').close()`. 
+//   `window.open('', '_self').close()`.
 
 vAPI.closePopup = function() {
     if ( vAPI.webextFlavor.soup.has('firefox') ) {
@@ -210,7 +210,7 @@ vAPI.localStorage = {
 
 /******************************************************************************/
 
-})(this);
+})();
 
 
 

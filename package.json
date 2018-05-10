@@ -1,0 +1,40 @@
+{
+  "name": "ublock",
+  "version": "1.16.5",
+  "description": "[![Build](https://travis-ci.org/gorhill/uBlock.svg?branch=master)](https://travis-ci.org/gorhill/uBlock) [![Crowdin](https://d322cqt584bo4o.cloudfront.net/ublock/localized.svg)](https://crowdin.com/project/ublock) [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/gorhill/uBlock/blob/master/LICENSE.txt)",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "tdd": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gorhill/uBlock.git"
+  },
+  "author": "The uBlock Origin authors",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues"
+  },
+  "homepage": "https://github.com/gorhill/uBlock",
+  "devDependencies": {
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
+    "node-localstorage": "^1.3.1"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "__localstore__"
+    ],
+    "testMatch": [
+      "**/__tests__/**/?(*.)(test).js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/jest-setup.js"
+  }
+}

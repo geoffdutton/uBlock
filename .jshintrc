@@ -3,6 +3,8 @@
 	"devel": true,
 	"eqeqeq": true,
 	"esnext": true,
+    "node": true,
+    "jasmine": true,
 	"globals": {
 		"browser": false,    // global variable in Firefox, Edge
 		"chrome": false,     // global variable in Chromium, Chrome, Opera
@@ -10,7 +12,8 @@
 		"safari": false,
 		"self": false,
 		"vAPI": false,
-		"µBlock": false
+		"µBlock": false,
+        "jest": false
 	},
 	"laxbreak": true,
 	"newcap": false,

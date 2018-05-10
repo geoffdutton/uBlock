@@ -14,6 +14,8 @@ bash ./tools/make-assets.sh $DES
 cp -R src/css               $DES/
 cp -R src/img               $DES/
 cp -R src/js                $DES/
+# remove test files
+rm -r $DES/js/__tests__
 cp -R src/lib               $DES/
 cp -R src/_locales          $DES/
 cp src/*.html               $DES/
