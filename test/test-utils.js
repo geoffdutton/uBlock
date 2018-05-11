@@ -21,5 +21,54 @@ module.exports = {
         navigator.__defineGetter__('userAgent', function () {
             return uaString;
         });
+    },
+    getMockedVAPI () {
+        // return a fresh object
+        return {
+            app: {
+                name: 'uBlock Test',
+            },
+            getURL: jest.fn(),
+            messaging: {
+                setup: jest.fn(),
+                listen: jest.fn(),
+            },
+            setTimeout: jest.fn(),
+            storage: {
+                get: jest.fn(),
+            },
+
+        };
+    },
+    getMockedUblock () {
+        return {
+            cosmeticFilteringEngine: {
+                removeFromSelectorCache: jest.fn(),
+            },
+            hiddenSettings: {},
+            localSettings: {},
+            pageStoreFromTabId: jest.fn(),
+            sessionFirewall: {
+                copyRules: jest.fn(),
+                hasSameRules: jest.fn(),
+                lookupRuleData: jest.fn(),
+            },
+            staticExtFilteringEngine: {
+                compile: jest.fn(),
+            },
+            staticNetFilteringEngine: {
+                compile: jest.fn(),
+            },
+            tabContextManager: {
+                mustLookup: jest.fn(tabId => {
+                    return {
+                        rootHostname: 'roothn.com',
+                    };
+                }),
+            },
+            userSettings: {
+                advancedUserEnabled: false,
+            },
+        };
     }
 };

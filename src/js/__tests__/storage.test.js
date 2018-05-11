@@ -2,23 +2,16 @@
 const fs = require('fs');
 const path = require('path');
 const stevenBlackRaw = fs.readFileSync(path.resolve(__dirname, 'steven_black_example_hosts.txt'), 'utf8');
-window.µBlock = {}; // jshint ignore:line
-// I can't type µBlock...
-const ub = µBlock;
+const TestUtils = require('../../../test/test-utils');
 
 describe('storage', () => {
+    let ub;
+
     beforeAll(() => {
         // self executing .saveLocalSettings
-        // @TODO As this gets bigger, move it to a common file
-        window.vAPI = {
-            setTimeout: jest.fn(),
-            storage: {
-                get: jest.fn(),
-            }
-        };
-        // Mock these out
-        ub.staticNetFilteringEngine = { compile: jest.fn() };
-        ub.staticExtFilteringEngine = { compile: jest.fn() };
+        window.vAPI = TestUtils.getMockedVAPI();
+        window.µBlock = TestUtils.getMockedUblock();
+        ub = window.µBlock;
         // Need CompiledLineWriter
         require('../utils');
         require('../storage');
